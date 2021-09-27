@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jquery.min.js"></script>
+    <style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: bisque;
+            color: red;
+            text-align: center;
+            line-height: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <button>更换</button>
+    <script>
+        function getData() {
+
+
+
+            $.get(
+                'https://fe.itcgq.com:8001/fenshou',
+                function(bd) {
+                    console.log(bd)
+
+                },
+                'json'
+            )
+
+        }
+        $('button').on('click', function() {
+            getData();
+        });
+        $(document).ready(function() {
+                    getData();
+                }
+
+            )
+            // 获取并更新数据
+            // function getData() {
+            //     // get请求
+            //     $.get(
+            //         'https://fe.itcgq.com:8001/fenshou',
+            //         function(bd) {
+            //             console.log(bd)
+            //             $('#content').html(bd.data[0].content)
+            //         },
+            //         'json'
+            //     )
+            // }
+
+        // // 点击事件获取数据
+        // $('#btn').click(function() {
+        //     getData()
+        // })
+
+        // // 页面加载获取数据
+        // $(document).ready(function() {
+        //     getData()
+        // })
+    </script>
+</body>
+
+</html>

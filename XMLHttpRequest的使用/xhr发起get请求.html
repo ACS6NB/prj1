@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 第一步：创建XHR对象
+        var xhr = new XMLHttpRequest();
+        // 第二部： 调用xhr.open函数 指定请求的方式和地址
+        xhr.open('GET', 'http://www.liulongbin.top:3006/api/getbooks?id=1'); //在URL地址后面加上？参数 这是发起带参数的请求  这种叫做查询字符串
+        //第三部 ：调用send函数 
+        xhr.send();
+        //第四部：监听xhr.onreadystatechange事件
+        xhr.onreadystatechange = function() {
+            //监听 xhr对象的请求状态 readyState;与服务器的响应状态 status
+            if (xhr.readyState === 4 && xhr.status === 200) //数据获取成功
+            {
+                //打印服务器 返回的数据
+                console.log(xhr.responseText);
+            }
+        }
+    </script>
+</body>
+
+</html>

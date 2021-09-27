@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="axios.js"></script>
+    <style>
+        textarea {
+            width: 500px;
+            height: 100px;
+            background-color: bisque;
+            text-align: center;
+            line-height: 100px;
+            color: brown;
+            border-radius: 25%;
+            border: 0;
+        }
+        
+        button,
+        textarea {
+            margin: 100px auto;
+            display: block;
+            text-align: center;
+            color: brown;
+            border-radius: 25%;
+            border: 0;
+            outline: none;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea name="" id="" cols="30" rows="10" style="resize: none;"></textarea>
+    <button>更换</button>
+    <script>
+        let btn = document.querySelector('button');
+        let tar = document.querySelector('textarea');
+        btn.addEventListener('click', function() {
+            tar.innerHTML = '';
+            axios({
+                method: 'get',
+                url: 'https://fe.itcgq.com:8001/qingshi',
+                data: ''
+            }).then(function(res) {
+                let result = res.data.data[0].content;
+                tar.innerHTML = result;
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script src="js/art-template.js"></script>
+    <!-- 导入模板引擎 -->
+</head>
+
+<body>
+    <div id="title"></div>
+
+
+    <!-- 定义模板 -->
+    <!-- //模板必须定义在<script></script>标签中 -->
+    <script type="text/html" id="user">
+        <!-- 调用template函数 -->
+
+        <h1>{{title}}</h1>
+
+        <h3>{{regTime | dataFormat}}</h3>
+
+
+    </script>
+    <script>
+        //定义一个时间过滤函数
+        function dataFormat(date) {
+            let y = date.getFullYear();
+            let m = date.getMonth() + 1;
+            let d = date.getDate();
+            return y + '-' + m + '-' + d
+
+        }
+        // 2.定义数据
+
+
+        var data = {
+                title: '用户信息',
+                name: 'zs',
+                age: 20,
+                isVIP: true,
+                regTime: new Date(),
+                hobby: ['吃饭', '睡觉', '打豆豆']
+
+            }
+            /* 调用template函数 */
+        let str = template('user', data);
+        $('#title').html(str);
+    </script>
+</body>
+
+</html>

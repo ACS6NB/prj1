@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="user"></div>
+    <!-- 定义模板结构 -->
+    <script type="text/html" id="tpl-user">
+
+        <div>姓名{{name}}</div>
+        <div>年龄{{ age }}</div>
+        <div>性别{{ gender }}</div>
+        <div>住址{{address }}</div>
+
+    </script>
+
+    <script>
+        var data = {
+            name: '张三',
+            age: 18,
+            gender: '男',
+            address: '中国'
+        }
+        var str = template('tpl-user', data);
+        //渲染结构
+        var user = document.querySelector('.user');
+        user.innerHTML = str;
+
+        // 定义一个模板引擎函数
+
+        function template(id, data) {
+            var str = document.getElementById(id).innerHTML;
+            let test = /{{\s*([a-zA-Z]+)\s*}}/;
+            let result = null;
+            while (result = test.exec(str)) {
+                console.log(result);
+                str = str.replace(result[0], data[result[1]])
+            }
+            return str
+
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let xhr = new XMLHttpRequest();
+        //设置超时时间
+        xhr.timeout = 1000
+        xhr.ontimeout = function() {
+            alert('请求超时了')
+        }
+        xhr.open('get', 'http://www.liulongbin.top:3006/api/getbooks');
+        xhr.send();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr.responseText);
+                let a = xhr.responseText;
+                console.log(JSON.parse(a));
+            }
+        }
+    </script>
+</body>
+
+</html>

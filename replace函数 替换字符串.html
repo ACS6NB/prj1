@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = '<div>我是{{name}}今年{{age}}岁</div>>';
+        let test = /{{\s*([a-zA-Z]+)\s*}}/;
+        console.log(test.exec(str));
+        // let result = test.exec(str); //第一次提取的是name
+        // str = str.replace(result[0], result[1]);
+        // let result1 = test.exec(str); ///第二次提取的是age
+        // str = str.replace(result1[0], result1[1]);
+        var result;
+        while (result = test.exec(str)) {
+            str = str.replace(result[0], result[1]);
+            console.log(str);
+        }
+        console.log(str);
+        /*while循环  */
+    </script>
+</body>
+
+</html>
